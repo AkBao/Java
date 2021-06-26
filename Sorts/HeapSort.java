@@ -36,12 +36,15 @@ public class HeapSort implements SortAlgorithm {
       int leftIndex = rootIndex * 2 + 1;
       int rightIndex = rootIndex * 2 + 2;
       T root = heap[rootIndex];
+      //右孩子不是最后一个节点，表示有左右孩子
       if (rightIndex <= lastChild) { // if has right and left children
         T left = heap[leftIndex];
         T right = heap[rightIndex];
+        // 左节点最小，则交换
         if (less(left, right) && less(left, root)) {
           swap(heap, leftIndex, rootIndex);
           heapSubtree(leftIndex, lastChild);
+          // 右孩子最小，则交换
         } else if (less(right, root)) {
           swap(heap, rightIndex, rootIndex);
           heapSubtree(rightIndex, lastChild);
